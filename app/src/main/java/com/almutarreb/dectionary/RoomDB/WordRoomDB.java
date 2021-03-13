@@ -20,8 +20,8 @@ public abstract class WordRoomDB extends RoomDatabase {
         if(instance==null)
         {
             instance= Room.databaseBuilder(context.getApplicationContext(),
-                    WordRoomDB.class,"word-database")
-                    .fallbackToDestructiveMigration().build();
+                    WordRoomDB.class,"word-database").fallbackToDestructiveMigration()
+                    .addCallback(callback).build();
         }
         return instance;
     }
@@ -30,6 +30,7 @@ public abstract class WordRoomDB extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
+            new PopulateDataAsyncTask(instance).execute();
         }
 
         @Override
