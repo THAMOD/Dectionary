@@ -7,7 +7,6 @@
     tools:context=".Views.MainActivity">
 
   <androidx.recyclerview.widget.RecyclerView
-      android:layout_marginTop="?attr/actionBarSize"
       android:id="@+id/recyclerview"
       android:layout_width="match_parent"
       tools:listitem="@layout/word_list_item"
